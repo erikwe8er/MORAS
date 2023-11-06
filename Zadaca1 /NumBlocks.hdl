@@ -1,0 +1,68 @@
+CHIP NumBlocks
+{
+  IN in[16];
+  OUT out[16];
+
+  PARTS:
+  Inc16(in=false,out=Inc1);
+  Xor(a=in[15],b=in[14],out=Xor1);
+  Mux16(a=false,b=Inc1,sel=Xor1,out=Mux1);
+
+  Inc16(in=Mux1,out=Inc2);
+  Xor(a=in[14],b=in[13],out=Xor2);
+  Mux16(a=Mux1,b=Inc1,sel=Xor2,out=Mux2);
+
+  Inc16(in=Mux2,out=Inc3);
+  Xor(a=in[13],b=in[12],out=Xor3);
+  Mux16(a=Mux2,b=Inc2,sel=Xor3,out=Mux3);
+
+  Inc16(in=Mux3,out=Inc4);
+  Xor(a=in[12],b=in[11],out=Xor4);
+  Mux16(a=Mux3,b=Inc3,sel=Xor4,out=Mux4);
+
+  Inc16(in=Mux4,out=Inc5);
+  Xor(a=in[11],b=in[10],out=Xor5);
+  Mux16(a=Mux4,b=Inc4,sel=Xor5,out=Mux5);
+
+  Inc16(in=Mux5,out=Inc6);
+  Xor(a=in[10],b=in[9],out=Xor6);
+  Mux16(a=Mux5,b=Inc5,sel=Xor6,out=Mux6);
+
+  Inc16(in=Mux6,out=Inc7);
+  Xor(a=in[9],b=in[8],out=Xor7);
+  Mux16(a=Mux6,b=Inc6,sel=Xor7,out=Mux7);
+
+  Inc16(in=Mux7,out=Inc8);
+  Xor(a=in[8],b=in[7],out=Xor8);
+  Mux16(a=Mux7,b=Inc7,sel=Xor8,out=Mux8);
+
+  Inc16(in=Mux8,out=Inc9);
+  Xor(a=in[7],b=in[6],out=Xor9);
+  Mux16(a=Mux8,b=Inc8,sel=Xor9,out=Mux9);
+
+  Inc16(in=Mux9,out=Inc10);
+  Xor(a=in[6],b=in[5],out=Xor10);
+  Mux16(a=Mux9,b=Inc9,sel=Xor10,out=Mux10);
+
+  Inc16(in=Mux10,out=Inc11);
+  Xor(a=in[5],b=in[4],out=Xor11);
+  Mux16(a=Mux10,b=Inc10,sel=Xor11,out=Mux11);
+
+  Inc16(in=Mux11,out=Inc12);
+  Xor(a=in[4],b=in[3],out=Xor12);
+  Mux16(a=Mux11,b=Inc11,sel=Xor12,out=Mux12);
+
+  Inc16(in=Mux12,out=Inc13);
+  Xor(a=in[3],b=in[2],out=Xor13);
+  Mux16(a=Mux12,b=Inc12,sel=Xor13,out=Mux13);
+
+  Inc16(in=Mux13,out=Inc14);
+  Xor(a=in[2],b=in[1],out=Xor14);
+  Mux16(a=Mux13,b=Inc13,sel=Xor14,out=Mux14);
+
+  Inc16(in=Mux14,out=Inc15);
+  Xor(a=in[1],b=in[0],out=Xor15);
+  Mux16(a=Mux14,b=Inc14,sel=Xor15,out=Mux15);
+
+  Inc16(in=Mux15,out=out);
+}

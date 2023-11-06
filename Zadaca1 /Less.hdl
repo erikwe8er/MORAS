@@ -1,0 +1,99 @@
+CHIP Less
+{
+  IN a[16],b[16];
+  OUT out;
+
+  PARTS:
+  Xor(a=a[0], b=b[0], out=Xor0);
+  DMux(in=Xor0,sel=a[0],a=Dmux0,b=false);
+
+  Div2(a=a,out[0]=FstA1, out[1..15]=RestA1);
+  Div2(a=b,out[0]=FstB1, out[1..15]=RestB1);
+  Xor(a=FstA1, b=FstB1, out=Xor1);
+  DMux(in=Xor1,sel=FstA1,a=Dmux1,b=false);
+  Mux4Way(a=Dmux0,b=false,c=false,d=true,sel[0]=Xor1,sel[1]=Dmux1,out=Final1);
+
+  Div2(a[0]=FstA1,a[1..15]=RestA1,out[0]=FstA2,out[1..15]=RestA2);
+  Div2(a[0]=FstB1,a[1..15]=RestB1,out[0]=FstB2,out[1..15]=RestB2);
+  Xor(a=FstA2, b=FstB2, out=Xor2);
+  DMux(in=Xor2,sel=FstA2,a=Dmux2,b=false);
+  Mux4Way(a=Final1,b=false,c=false,d=true,sel[0]=Xor2,sel[1]=Dmux2,out=Final2);
+
+  Div2(a[0]=FstA2,a[1..15]=RestA2,out[0]=FstA3,out[1..15]=RestA3);
+  Div2(a[0]=FstB2,a[1..15]=RestB2,out[0]=FstB3,out[1..15]=RestB3);
+  Xor(a=FstA3, b=FstB3, out=Xor3);
+  DMux(in=Xor3,sel=FstA3,a=Dmux3,b=false);
+  Mux4Way(a=Final2,b=false,c=false,d=true,sel[0]=Xor3,sel[1]=Dmux3,out=Final3);
+
+  Div2(a[0]=FstA3,a[1..15]=RestA3,out[0]=FstA4,out[1..15]=RestA4);
+  Div2(a[0]=FstB3,a[1..15]=RestB3,out[0]=FstB4,out[1..15]=RestB4);
+  Xor(a=FstA4, b=FstB4, out=Xor4);
+  DMux(in=Xor4,sel=FstA4,a=Dmux4,b=false);
+  Mux4Way(a=Final3,b=false,c=false,d=true,sel[0]=Xor4,sel[1]=Dmux4,out=Final4);
+
+  Div2(a[0]=FstA4,a[1..15]=RestA4,out[0]=FstA5,out[1..15]=RestA5);
+  Div2(a[0]=FstB4,a[1..15]=RestB4,out[0]=FstB5,out[1..15]=RestB5);
+  Xor(a=FstA5, b=FstB5, out=Xor5);
+  DMux(in=Xor5,sel=FstA5,a=Dmux5,b=false);
+  Mux4Way(a=Final4,b=false,c=false,d=true,sel[0]=Xor5,sel[1]=Dmux5,out=Final5);
+
+  Div2(a[0]=FstA5,a[1..15]=RestA5,out[0]=FstA6,out[1..15]=RestA6);
+  Div2(a[0]=FstB5,a[1..15]=RestB5,out[0]=FstB6,out[1..15]=RestB6);
+  Xor(a=FstA6, b=FstB6, out=Xor6);
+  DMux(in=Xor6,sel=FstA6,a=Dmux6,b=false);
+  Mux4Way(a=Final5,b=false,c=false,d=true,sel[0]=Xor6,sel[1]=Dmux6,out=Final6);
+
+  Div2(a[0]=FstA6,a[1..15]=RestA6,out[0]=FstA7,out[1..15]=RestA7);
+  Div2(a[0]=FstB6,a[1..15]=RestB6,out[0]=FstB7,out[1..15]=RestB7);
+  Xor(a=FstA7, b=FstB7, out=Xor7);
+  DMux(in=Xor7,sel=FstA7,a=Dmux7,b=false);
+  Mux4Way(a=Final6,b=false,c=false,d=true,sel[0]=Xor7,sel[1]=Dmux7,out=Final7);
+
+  Div2(a[0]=FstA7,a[1..15]=RestA7,out[0]=FstA8,out[1..15]=RestA8);
+  Div2(a[0]=FstB7,a[1..15]=RestB7,out[0]=FstB8,out[1..15]=RestB8);
+  Xor(a=FstA8, b=FstB8, out=Xor8);
+  DMux(in=Xor8,sel=FstA8,a=Dmux8,b=false);
+  Mux4Way(a=Final7,b=false,c=false,d=true,sel[0]=Xor8,sel[1]=Dmux8,out=Final8);
+
+  Div2(a[0]=FstA8,a[1..15]=RestA8,out[0]=FstA9,out[1..15]=RestA9);
+  Div2(a[0]=FstB8,a[1..15]=RestB8,out[0]=FstB9,out[1..15]=RestB9);
+  Xor(a=FstA9, b=FstB9, out=Xor9);
+  DMux(in=Xor9,sel=FstA9,a=Dmux9,b=false);
+  Mux4Way(a=Final8,b=false,c=false,d=true,sel[0]=Xor9,sel[1]=Dmux9,out=Final9);
+
+  Div2(a[0]=FstA9,a[1..15]=RestA9,out[0]=FstA10,out[1..15]=RestA10);
+  Div2(a[0]=FstB9,a[1..15]=RestB9,out[0]=FstB10,out[1..15]=RestB10);
+  Xor(a=FstA10, b=FstB10, out=Xor10);
+  DMux(in=Xor10,sel=FstA10,a=Dmux10,b=false);
+  Mux4Way(a=Final9,b=false,c=false,d=true,sel[0]=Xor10,sel[1]=Dmux10,out=Final10);
+
+  Div2(a[0]=FstA10,a[1..15]=RestA10,out[0]=FstA11,out[1..15]=RestA11);
+  Div2(a[0]=FstB10,a[1..15]=RestB10,out[0]=FstB11,out[1..15]=RestB11);
+  Xor(a=FstA11, b=FstB11, out=Xor11);
+  DMux(in=Xor11,sel=FstA11,a=Dmux11,b=false);
+  Mux4Way(a=Final10,b=false,c=false,d=true,sel[0]=Xor11,sel[1]=Dmux11,out=Final11);
+
+  Div2(a[0]=FstA11,a[1..15]=RestA11,out[0]=FstA12,out[1..15]=RestA12);
+  Div2(a[0]=FstB11,a[1..15]=RestB11,out[0]=FstB12,out[1..15]=RestB12);
+  Xor(a=FstA12, b=FstB12, out=Xor12);
+  DMux(in=Xor12,sel=FstA12,a=Dmux12,b=false);
+  Mux4Way(a=Final11,b=false,c=false,d=true,sel[0]=Xor12,sel[1]=Dmux12,out=Final12);
+
+  Div2(a[0]=FstA12,a[1..15]=RestA12,out[0]=FstA13,out[1..15]=RestA13);
+  Div2(a[0]=FstB12,a[1..15]=RestB12,out[0]=FstB13,out[1..15]=RestB13);
+  Xor(a=FstA13, b=FstB13, out=Xor13);
+  DMux(in=Xor13,sel=FstA13,a=Dmux13,b=false);
+  Mux4Way(a=Final12,b=false,c=false,d=true,sel[0]=Xor13,sel[1]=Dmux13,out=Final13);
+
+  Div2(a[0]=FstA13,a[1..15]=RestA13,out[0]=FstA14,out[1..15]=RestA14);
+  Div2(a[0]=FstB13,a[1..15]=RestB13,out[0]=FstB14,out[1..15]=RestB14);
+  Xor(a=FstA14, b=FstB14, out=Xor14);
+  DMux(in=Xor14,sel=FstA14,a=Dmux14,b=false);
+  Mux4Way(a=Final13,b=false,c=false,d=true,sel[0]=Xor14,sel[1]=Dmux14,out=Final14);
+
+  Div2(a[0]=FstA14,a[1..15]=RestA14,out[0]=FstA15,out[1..15]=RestA15);
+  Div2(a[0]=FstB14,a[1..15]=RestB14,out[0]=FstB15,out[1..15]=RestB15);
+  Xor(a=FstA15, b=FstB15, out=Xor15);
+  DMux(in=Xor15,sel=FstA15,a=Dmux15,b=false);
+  Mux4Way(a=Final14,b=false,c=false,d=true,sel[0]=Xor15,sel[1]=Dmux15,out=out);
+  }

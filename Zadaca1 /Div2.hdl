@@ -1,0 +1,23 @@
+CHIP Div2
+{
+  IN a[16];
+  OUT out[16];
+
+  PARTS:
+  And(a=true, b=false, out=out[15]);
+  HalfAdder(a=a[15],b=true,sum=false,carry=out[14]);
+  HalfAdder(a=a[14],b=true,sum=false,carry=out[13]);
+  HalfAdder(a=a[13],b=true,sum=false,carry=out[12]);
+  HalfAdder(a=a[12],b=true,sum=false,carry=out[11]);
+  HalfAdder(a=a[11],b=true,sum=false,carry=out[10]);
+  HalfAdder(a=a[10],b=true,sum=false,carry=out[9]);
+  HalfAdder(a=a[9],b=true,sum=false,carry=out[8]);
+  HalfAdder(a=a[8],b=true,sum=false,carry=out[7]);
+  HalfAdder(a=a[7],b=true,sum=false,carry=out[6]);
+  HalfAdder(a=a[6],b=true,sum=false,carry=out[5]);
+  HalfAdder(a=a[5],b=true,sum=false,carry=out[4]);
+  HalfAdder(a=a[4],b=true,sum=false,carry=out[3]);
+  HalfAdder(a=a[3],b=true,sum=false,carry=out[2]);
+  HalfAdder(a=a[2],b=true,sum=false,carry=out[1]);
+  HalfAdder(a=a[1],b=true,sum=false,carry=out[0]);
+}
