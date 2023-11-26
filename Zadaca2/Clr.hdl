@@ -1,0 +1,71 @@
+CHIP Clr
+{
+  IN in[16];
+  OUT out[16];
+
+  PARTS:
+  Mux(a=false,b=true,sel=in[15],out=Mux1);
+  Mux(a=Mux1,b=true,sel=in[14],out=Mux2);
+  Mux(a=Mux2,b=true,sel=in[13],out=Mux3);
+  Mux(a=Mux3,b=true,sel=in[12],out=Mux4);
+  Mux(a=Mux4,b=true,sel=in[11],out=Mux5);
+  Mux(a=Mux5,b=true,sel=in[10],out=Mux6);
+  Mux(a=Mux6,b=true,sel=in[9],out=Mux7);
+  Mux(a=Mux7,b=true,sel=in[8],out=Mux8);
+  Mux(a=Mux8,b=true,sel=in[7],out=Mux9);
+  Mux(a=Mux9,b=true,sel=in[6],out=Mux10);
+  Mux(a=Mux10,b=true,sel=in[5],out=Mux11);
+  Mux(a=Mux11,b=true,sel=in[4],out=Mux12);
+  Mux(a=Mux12,b=true,sel=in[3],out=Mux13);
+  Mux(a=Mux13,b=true,sel=in[2],out=Mux14);
+  Mux(a=Mux14,b=true,sel=in[1],out=Mux15);
+  Mux(a=Mux15,b=true,sel=in[0],out=Mux16);
+
+  Inc16(in=false,out=Inc1);
+  Mux16(a=Inc1,b=false,sel=Mux1,out=out1);
+
+  Inc16(in=out1,out=Inc2);
+  Mux16(a=Inc2,b=out1,sel=Mux2,out=out2);
+
+  Inc16(in=out2,out=Inc3);
+  Mux16(a=Inc3,b=out2,sel=Mux3,out=out3);
+
+  Inc16(in=out3,out=Inc4);
+  Mux16(a=Inc4,b=out3,sel=Mux4,out=out4);
+
+  Inc16(in=out4,out=Inc5);
+  Mux16(a=Inc5,b=out4,sel=Mux5,out=out5);
+
+  Inc16(in=out5,out=Inc6);
+  Mux16(a=Inc6,b=out5,sel=Mux6,out=out6);
+
+  Inc16(in=out6,out=Inc7);
+  Mux16(a=Inc7,b=out6,sel=Mux7,out=out7);
+
+  Inc16(in=out7,out=Inc8);
+  Mux16(a=Inc8,b=out7,sel=Mux8,out=out8);
+
+  Inc16(in=out8,out=Inc9);
+  Mux16(a=Inc9,b=out8,sel=Mux9,out=out9);
+
+  Inc16(in=out9,out=Inc10);
+  Mux16(a=Inc10,b=out9,sel=Mux10,out=out10);
+
+  Inc16(in=out10,out=Inc11);
+  Mux16(a=Inc11,b=out10,sel=Mux11,out=out11);
+
+  Inc16(in=out11,out=Inc12);
+  Mux16(a=Inc12,b=out11,sel=Mux12,out=out12);
+
+  Inc16(in=out12,out=Inc13);
+  Mux16(a=Inc13,b=out12,sel=Mux13,out=out13);
+
+  Inc16(in=out13,out=Inc14);
+  Mux16(a=Inc14,b=out13,sel=Mux14,out=out14);
+
+  Inc16(in=out14,out=Inc15);
+  Mux16(a=Inc15,b=out14,sel=Mux15,out=out15);
+
+  Inc16(in=out15,out=Inc16);
+  Mux16(a=Inc16,b=out15,sel=Mux16,out=out);
+}

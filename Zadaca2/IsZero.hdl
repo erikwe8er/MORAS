@@ -1,0 +1,42 @@
+CHIP IsZero
+{
+  IN in[16];
+  OUT out;
+
+  PARTS:
+  And(a=in[0],b=true,out=And1);
+  And(a=in[1],b=true,out=And2);
+  And(a=in[2],b=true,out=And3);
+  And(a=in[3],b=true,out=And4);
+  And(a=in[4],b=true,out=And5);
+  And(a=in[5],b=true,out=And6);
+  And(a=in[6],b=true,out=And7);
+  And(a=in[7],b=true,out=And8);
+  And(a=in[8],b=true,out=And9);
+  And(a=in[9],b=true,out=And10);
+  And(a=in[10],b=true,out=And11);
+  And(a=in[11],b=true,out=And12);
+  And(a=in[12],b=true,out=And13);
+  And(a=in[13],b=true,out=And14);
+  And(a=in[14],b=true,out=And15);
+  And(a=in[15],b=true,out=And16);
+
+  Mux(a=false,b=true,sel=And1,out=Mux1);
+  Mux(a=And2,b=true,sel=Mux1,out=Mux2);
+  Mux(a=And3,b=true,sel=Mux2,out=Mux3);
+  Mux(a=And4,b=true,sel=Mux3,out=Mux4);
+  Mux(a=And5,b=true,sel=Mux4,out=Mux5);
+  Mux(a=And6,b=true,sel=Mux5,out=Mux6);
+  Mux(a=And7,b=true,sel=Mux6,out=Mux7);
+  Mux(a=And8,b=true,sel=Mux7,out=Mux8);
+  Mux(a=And9,b=true,sel=Mux8,out=Mux9);
+  Mux(a=And10,b=true,sel=Mux9,out=Mux10);
+  Mux(a=And11,b=true,sel=Mux10,out=Mux11);
+  Mux(a=And12,b=true,sel=Mux11,out=Mux12);
+  Mux(a=And13,b=true,sel=Mux12,out=Mux13);
+  Mux(a=And14,b=true,sel=Mux13,out=Mux14);
+  Mux(a=And15,b=true,sel=Mux14,out=Mux15);
+  Mux(a=And16,b=true,sel=Mux15,out=Mux16);
+
+  Not(in=Mux16,out=out);
+}
