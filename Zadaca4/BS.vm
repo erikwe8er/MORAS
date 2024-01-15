@@ -1,0 +1,97 @@
+function BS.search 3
+    push argument 0
+    pop local 0
+    push argument 0
+    push argument 1
+    add
+    pop local 2
+    push local 2
+    push local 0
+    sub
+    push constant 2
+    call Div.div 2
+    push local 0
+    add
+    pop local 1
+label LOOP_START 
+    push local 1
+    push local 0
+    sub 
+    push constant 1
+    eq
+    if-goto END
+    push local 2
+    push local 1
+    sub 
+    push constant 1
+    eq
+    if-goto END
+    push local 1
+    pop pointer 1
+    push that 0
+    push argument 2
+    eq
+    if-goto EQUAL
+    push that 0
+    push argument 2
+    lt
+    if-goto GT 
+    goto LT
+
+
+label EQUAL
+    push local 1
+    push argument 0
+    sub
+    return
+
+label GT
+    push local 1
+    push constant 1
+    add
+    pop pointer 1
+    push that 0
+    push argument 2
+    gt 
+    if-goto END
+    push local 2
+    push local 1
+    sub
+    push constant 2
+    call Div.div 2
+    push local 1
+    add
+    pop local 1
+    goto LOOP_START
+
+label LT
+    push local 1
+    push constant 1
+    sub
+    pop pointer 1
+    push that 0
+    push argument 2
+    lt 
+    if-goto END
+    push local 1
+    push local 0
+    sub
+    push constant 2
+    call Div.div 2
+    push local 0
+    add
+    pop local 1
+    goto LOOP_START
+
+label END
+    push local 1
+    pop pointer 1
+    push that 0
+    push argument 2
+    eq
+    if-goto EQUAL
+    push constant 1
+    push constant 2
+    sub
+    return
+

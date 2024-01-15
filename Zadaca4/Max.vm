@@ -1,0 +1,25 @@
+function Max.max 3
+    push argument 0
+    push argument 1
+    gt 
+    if-goto FST
+    push argument 1
+    push argument 2
+    gt 
+    if-goto SND-G
+    goto THD-G
+label FST
+    push argument 0
+    push argument 2
+    gt
+    if-goto FST-G
+    goto SND-G
+label FST-G 
+    push argument 0
+    return
+label SND-G 
+    push argument 1
+    return
+label THD-G 
+    push argument 2
+    return
