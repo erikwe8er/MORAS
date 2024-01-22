@@ -1,0 +1,167 @@
+class vint
+{
+    field int cap;
+    field Array A;
+
+    method void print()
+    {
+        var int i;
+        let i = 0;
+        while(i<cap)
+        {
+            do Output.printInt(A[i]);
+            do Output.printString(" ");
+            let i = i + 1;
+        }
+        do Output.println();
+        return;
+    }
+
+    function int pow(int n)
+    {
+        var int num;
+        let num = 2;
+        while(n>1)
+        {
+            let num = 2 * num;
+            let n = n - 1;
+        }
+
+        return num;
+    }
+
+    constructor vint new(int n)
+    {
+        if(n<0)
+        {
+            let cap = 1;
+        }
+        else
+        {
+            let cap = vint.pow(n);
+        }
+
+        let A = Array.new(cap);
+
+        return this;
+    }
+
+    method int len()
+    {
+        return cap;
+    }
+
+    method void resize(int m)
+    {
+        var Array temp;
+        var int temp_cap,i;
+        if(m<0)
+        {
+            let temp = Array.new(1);
+            let temp[0] = A[0];
+            do A.dispose();
+
+            let A = temp;
+            let cap = 1;
+        }
+        else
+        {
+            let temp_cap = vint.pow(m);
+            let temp = Array.new(temp_cap);
+            let i = 0;
+            while(i<Math.min(cap,temp_cap))
+            {
+                let temp[i] = A[i];
+                let i = i + 1;
+            }
+            do A.dispose();
+            let A = temp;
+            let cap = temp_cap;
+        }
+        return;
+    }
+
+    method void set(int k,int v)
+    {
+        if((k < cap) & (k > -1))
+        {
+            let A[k] = v;
+        }
+        else
+        {
+            do Output.printInt(k);
+            do Output.printString(":Index out of range.(set)");
+            do Output.println();
+        }
+        return;
+    }
+
+    method int get(int k)
+    {
+        if((k < cap) & (k > -1))
+        {
+            return A[k];
+        }
+        else
+        {
+            do Output.printInt(k);
+            do Output.printString(":Index out of range.(get)");
+            do Output.println();
+            return -1;
+        }
+    }
+
+    function bool is_eq(vint a, vint b)
+    {
+        var int i;
+        let i = 0;
+
+        if(a.len() = b.len())
+        {
+            while(i<a.len())
+            {
+                if(~(a.get(i) = b.get(i)))
+                {
+                    return false;
+                }
+                let i = i + 1;
+            }
+            return true;
+        }
+
+        return false;
+    }
+
+    method Array return_array()
+    {
+        return A;
+    }
+
+    function bool elems(vint a,vint b)
+    {
+        var Array temp1,temp2;
+        var int i;
+        let i = 0;
+
+        if(a.len() = b.len())
+        {
+            let temp1 = a.return_array();
+            let temp2 = b.return_array();
+
+            do Qsort.QuickSort(temp1,0,a.len());
+            do Qsort.QuickSort(temp2,0,b.len());
+
+            while(i<a.len())
+            {
+                if(~(temp1[i] = temp2[i]))
+                {
+                    return false;
+                }
+                let i = i + 1;
+            }
+            return true;
+        }
+        return false;
+    }
+
+}

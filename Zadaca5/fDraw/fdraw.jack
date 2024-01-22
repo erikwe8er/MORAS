@@ -1,0 +1,109 @@
+class fdraw
+{
+    function int f(int x)
+    {
+        var int temp;
+        let temp = Math.multiply(x,x);
+        let temp = Math.multiply(temp,x);
+        if(temp>-33)
+        {
+            return temp;
+        }
+        return 33;
+    }
+
+    function bool compare(int x, int y)
+    {
+        return x = y;
+    }
+
+    function int changeX(int num)
+    {
+        var int result;
+        
+        let result =  Math.multiply((32 + num),4);
+    
+        return result;
+    }
+
+    function int changeY(int num)
+    {
+        var int result;
+        
+        let result = 256 - Math.multiply((32 + num),4);
+    
+        return result;
+    }
+
+    function void draw_func()
+    {
+        var int i,cnt;
+        var Array Xarr, Yarr;
+
+        let cnt = 4;
+        do Screen.drawLine(0,128,256,128);
+        do Screen.drawLine(128,0,128,255);
+        
+        while(cnt<256)
+        {
+            do Screen.drawLine(cnt,127,cnt,129);
+            do Screen.drawLine(127,cnt,129,cnt);
+            let cnt = cnt + 4;
+        }
+
+        let i = -32;
+        let cnt = 0;
+        let Xarr = Array.new(64);
+        let Yarr = Array.new(64);
+
+        while(cnt<64)
+        {
+            let Xarr[cnt] = fdraw.changeX(i);
+            if((fdraw.f(i) > -32) & (fdraw.f(i) < 32))
+            {
+                let Yarr[cnt] = fdraw.f(i);
+                let Yarr[cnt] = fdraw.changeY(Yarr[cnt]);
+            }
+            else
+            {
+                let Yarr[cnt] = -1;
+            }
+            let cnt = cnt + 1;
+            let i = i + 1;
+        }
+
+        let cnt = 0;
+        let i = 1;
+
+        while(i<64)
+        {
+            if(~(Yarr[cnt] = -1) & ~(Yarr[i] = -1))
+            {
+                if(~(Yarr[cnt] = Yarr[i]) & (Xarr[i]<129))
+                {
+                    do Screen.drawLine(Xarr[i],Yarr[i],Xarr[cnt],Yarr[cnt]);
+                    let cnt = i;
+                }
+                if(~(Yarr[cnt] = Yarr[i]) & ((Xarr[i]>128) | (Xarr[i]=128)))
+                {
+                    while(Yarr[i] = Yarr[i+1])
+                    {
+                        let i = i + 1;
+                    }
+                    do Screen.drawLine(Xarr[i],Yarr[i],Xarr[cnt],Yarr[cnt]);
+                    let cnt = i;
+                }
+            }
+            if(Yarr[cnt] = -1)
+            {
+                let cnt = i;
+            }
+            let i = i + 1;
+        }
+
+        do Xarr.dispose();
+        do Yarr.dispose();
+
+        return;
+    }
+}

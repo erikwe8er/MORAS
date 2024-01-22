@@ -1,0 +1,24 @@
+class Main
+{
+    function void main()
+    {
+        var Array A;
+
+        let A = Array.new(6);
+
+        let A[0] = 12;
+        let A[1] = 2;
+        let A[2] = 1;
+        let A[3] = 5;
+        let A[4] = 10;
+        let A[5] = 7;
+
+        do Qsort.QuickSort(A,0,5);
+
+        do Qsort.print(A,6);
+
+        do A.dispose();
+
+        return;
+    }
+}

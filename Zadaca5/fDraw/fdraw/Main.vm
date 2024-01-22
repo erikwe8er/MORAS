@@ -1,0 +1,5 @@
+function Main.main 0
+call fdraw.draw_func 0
+pop temp 0
+push constant 0
+return

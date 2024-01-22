@@ -1,0 +1,42 @@
+class Main
+{
+    function void main()
+    {
+        var vint vector1,vector2;
+        let vector1 = vint.new(2);
+        do vector1.set(0,1);
+        do vector1.set(1,2);
+        do vector1.set(2,3);
+        do vector1.set(3,4);
+        do vector1.print();
+        let vector2 = vint.new(2);
+        do vector2.set(0,1);
+        do vector2.set(1,4);
+        do vector2.set(2,5);
+        do vector2.set(3,3);
+        do vector2.print();
+        if(vint.is_eq(vector1,vector2))
+        {
+            do Output.printString("Equal");
+        }
+        else
+        {
+            do Output.printString("Not Equal");
+        }
+
+        do Output.println();
+
+        if(vint.elems(vector1,vector2))
+        {
+            do Output.printString("Equal(elems)");
+        }
+        else
+        {
+            do Output.printString("Not Equal");
+        }
+      
+      
+
+        return;
+    }
+}
